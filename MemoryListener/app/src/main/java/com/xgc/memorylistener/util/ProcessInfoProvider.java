@@ -22,12 +22,6 @@ import java.util.List;
 
 public class ProcessInfoProvider {
 
-    public static int getProcessCount(Context ctx) {
-        ActivityManager am = (ActivityManager) ctx
-                .getSystemService(Context.ACTIVITY_SERVICE);
-        return am.getRunningAppProcesses().size();
-    }
-
     public static long getCurrentMem(Context ctx) {
         ActivityManager am = (ActivityManager) ctx
                 .getSystemService(Context.ACTIVITY_SERVICE);
@@ -102,17 +96,5 @@ public class ProcessInfoProvider {
             }
         }
         return plist;
-    }
-
-    public static void killBackgroundProcess(Context ctx) {
-        ActivityManager am = (ActivityManager) ctx.getSystemService(Context.ACTIVITY_SERVICE);
-        List<RunningAppProcessInfo> appProcesses = am.getRunningAppProcesses();
-        for (RunningAppProcessInfo runningProcess : appProcesses) {
-            String packageName = runningProcess.processName;
-            if (packageName.equals(ctx.getPackageName())) {
-                continue;
-            }
-            am.killBackgroundProcesses(packageName);
-        }
     }
 }

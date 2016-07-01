@@ -5,7 +5,6 @@ import android.text.format.Formatter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -70,6 +69,5 @@ public class MemoryProcessAdapter extends BaseAdapter {
         public ImageView iv_icon;
         public TextView tv_memory;
         public TextView tv_name;
-        public CheckBox cb_check;
     }
 }

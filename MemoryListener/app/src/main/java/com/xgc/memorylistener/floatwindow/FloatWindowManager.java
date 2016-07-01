@@ -29,7 +29,10 @@ public class FloatWindowManager {
 	public static FloatWindowManager getInstance(Context context) {
 
 		if (floatWindowManager == null) {
-			floatWindowManager = new FloatWindowManager(context);
+			synchronized (FloatWindowManager.class) {
+				if(floatWindowManager ==null)
+				floatWindowManager = new FloatWindowManager(context);
+			}
 		}
 		return floatWindowManager;
 	}
@@ -54,7 +57,6 @@ public class FloatWindowManager {
 	/**
 	 * 将小悬浮窗从屏幕上移除
 	 * 
-	 * @param context
 	 */
 	public void removeSmallWindow() {
 		if (smallWindow != null) {
@@ -87,7 +89,6 @@ public class FloatWindowManager {
 	/**
 	 * 将大悬浮窗从屏幕上移除
 	 * 
-	 * @param context
 	 */
 	public void removeBigWindow() {
 		if (bigWindow != null) {
@@ -120,7 +121,6 @@ public class FloatWindowManager {
 	/**
 	 * 如果WindowManager还未创建，则创建新的WindowManager返回。否则返回当前已创建的WindowManager
 	 * 
-	 * @param context
 	 * @return
 	 */
 	private WindowManager getWindowManager() {
